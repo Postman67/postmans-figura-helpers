@@ -1,1 +1,4 @@
 /.vscode/
+.luarc.json
+install.bat
+postmans-figura-helpers.code-workspace
