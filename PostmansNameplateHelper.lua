@@ -29,6 +29,7 @@ local nameplateSuffix = ""                                    -- text to show af
 local enableOutline = false                                  -- whether to enable text outline
 local enableShadow = true                                    -- whether to enable text shadow
 local backgroundColor = "#000000"                            -- background color (hex) Set to "#00000000" for transparent
+local outlineColor = "#FFFFFF"                               -- outline color (hex)
 local nameplatePosition = {0, 0, 0}                         -- nameplate position offset {x, y, z}
 
 -- Chat nameplate settings
@@ -36,7 +37,7 @@ local chatUsername = "YourNameHere"                       -- username for chat (
 local chatGradientStart = "#FF0000"                          -- starting color for chat name gradient
 local chatGradientEnd = "#FFB300"                            -- ending color for chat name gradient
 local chatSuffix = "YOUR-SUFFIX-HERE"                        -- suffix text for chat nameplate
-local chatSuffixColor = "#FF4D00"                              -- color for chat suffix text
+local chatSuffixColor = "#FFFFFF"                              -- color for chat suffix text
 local boldText = true                                         -- whether chat name should be bold
 
 -- Chat hover card settings (easy configuration)
@@ -68,6 +69,9 @@ local rgbToHex = vectors.rgbToHex
 -- Configure nameplate appearance
 nameplate.ENTITY:setBackgroundColor(vectors.hexToRGB(backgroundColor))
 nameplate.ENTITY:setOutline(enableOutline)
+if enableOutline then
+  nameplate.ENTITY:setOutlineColor(vectors.hexToRGB(outlineColor))
+end
 nameplate.ENTITY:setShadow(enableShadow)
 if nameplatePosition[1] ~= 0 or nameplatePosition[2] ~= 0 or nameplatePosition[3] ~= 0 then
   nameplate.ENTITY:setPos(nameplatePosition[1], nameplatePosition[2], nameplatePosition[3])
@@ -192,7 +196,7 @@ end
 -- Create hover content for chat nameplate
 local function generateChatHoverContent()
   local chatHover = {}
-  table.insert(chatHover, {text = "", color = chatSuffixColor}) -- Default first element
+  table.insert(chatHover, {text = "", color = "#fefefe"}) -- Default first element
   
   for _, line in ipairs(chatHoverLines) do
     table.insert(chatHover, {
@@ -210,7 +214,7 @@ local chatHoverContentData = generateChatHoverContent()
 -- Create chat nameplate with hover functionality
 local chatNameWithHover = {
   text = "",
-  extra = createNameplateText({ text = chatSuffix, bold = true }),
+  extra = createNameplateText({ text = chatSuffix, color = chatSuffixColor, bold = true }),
   hoverEvent = {
     action = "show_text",
     contents = chatHoverContentData
