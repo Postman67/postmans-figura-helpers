@@ -38,11 +38,17 @@ local chatGradientEnd = "#FFB300"                            -- ending color for
 local chatUsername = "YourNameHere"                       -- username for chat (leave empty to use main username)
 local chatSuffix = "YOUR-SUFFIX-HERE"                        -- suffix text for chat nameplate
 
--- Chat hover card settings
-local chatHoverTitle = "Your Name"                           -- title in chat hover card
-local chatHoverSubtitle = "(Your subtitle)"                  -- subtitle in chat hover card
-local chatHoverLine1 = "First line of info"                  -- first info line
-local chatHoverLine2 = "Second line of info"                 -- second info line
+-- Chat hover card settings (easy configuration)
+local chatHoverLines = {
+  -- Format: {text, color, bold}
+  {"Your Name", "#FF4D00", true},                            -- Title line
+  {" (Your subtitle)", "#9898ac", true},                     -- Subtitle (same line as title)
+  {"\n - First line of info", "#FFE3AE", false},            -- Info line 1 (new line)
+  {"\n - Second line of info", "#FFCA8D", false},           -- Info line 2 (new line)
+  -- Add more lines here as needed:
+  -- {"\n - Third line", "#FFAA80", false},
+  -- {"\n - Fourth line", "#FF8855", true},
+}
 
 -- ============================================
 -- IMPLEMENTATION (Do not edit below this line)
@@ -183,12 +189,22 @@ local function createNameplateText(...)
 end
 
 -- Create hover content for chat nameplate
-local chatHoverContentData = {
-  {text = "", color = "#fefefe"}, -- Default color
-  {text = chatHoverTitle, color = "#FF4D00"},{text = " " .. chatHoverSubtitle, color = "#9898ac"},
-  {text = "\n - ", color = "#fefefe"},{text = chatHoverLine1, color = "#FFE3AE"},
-  {text = "\n - ", color = "#fefefe"},{text = chatHoverLine2, color = "#FFCA8D"},
-}
+local function generateChatHoverContent()
+  local chatHover = {}
+  table.insert(chatHover, {text = "", color = "#fefefe"}) -- Default first element
+  
+  for _, line in ipairs(chatHoverLines) do
+    table.insert(chatHover, {
+      text = line[1],
+      color = line[2],
+      bold = line[3]
+    })
+  end
+  
+  return chatHover
+end
+
+local chatHoverContentData = generateChatHoverContent()
 
 -- Create chat nameplate with hover functionality
 local chatNameWithHover = {
