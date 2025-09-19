@@ -28,15 +28,16 @@ local nameplateSuffix = ""                                    -- text to show af
 -- Nameplate appearance settings
 local enableOutline = false                                  -- whether to enable text outline
 local enableShadow = true                                    -- whether to enable text shadow
-local backgroundColor = "#000000"                            -- background color (hex)
+local backgroundColor = "#000000"                            -- background color (hex) Set to "#00000000" for transparent
 local nameplatePosition = {0, 0, 0}                         -- nameplate position offset {x, y, z}
 
 -- Chat nameplate settings
-local boldText = true                                         -- whether chat name should be bold
+local chatUsername = "YourNameHere"                       -- username for chat (leave empty to use main username)
 local chatGradientStart = "#FF0000"                          -- starting color for chat name gradient
 local chatGradientEnd = "#FFB300"                            -- ending color for chat name gradient
-local chatUsername = "YourNameHere"                       -- username for chat (leave empty to use main username)
 local chatSuffix = "YOUR-SUFFIX-HERE"                        -- suffix text for chat nameplate
+local chatSuffixColor = "#FF4D00"                              -- color for chat suffix text
+local boldText = true                                         -- whether chat name should be bold
 
 -- Chat hover card settings (easy configuration)
 local chatHoverLines = {
@@ -191,7 +192,7 @@ end
 -- Create hover content for chat nameplate
 local function generateChatHoverContent()
   local chatHover = {}
-  table.insert(chatHover, {text = "", color = "#fefefe"}) -- Default first element
+  table.insert(chatHover, {text = "", color = chatSuffixColor}) -- Default first element
   
   for _, line in ipairs(chatHoverLines) do
     table.insert(chatHover, {
