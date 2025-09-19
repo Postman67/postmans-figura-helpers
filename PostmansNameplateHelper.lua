@@ -33,16 +33,9 @@ local nameplatePosition = {0, 0, 0}                         -- nameplate positio
 
 -- Chat nameplate settings
 local boldText = true                                         -- whether chat name should be bold
-local chatNameGradient = {                                   -- custom gradient for chat name (edit each letter)
-  { text = 'Y', color = '#FF0000', bold = boldText },        -- Each letter can have its own color
-  { text = 'o', color = '#FF1A00', bold = boldText },
-  { text = 'u', color = '#FF3300', bold = boldText },
-  { text = 'r', color = '#FF4D00', bold = boldText },
-  { text = 'N', color = '#FF6600', bold = boldText },
-  { text = 'a', color = '#FF8000', bold = boldText },
-  { text = 'm', color = '#FF9900', bold = boldText },
-  { text = 'e', color = '#FFB300', bold = boldText },
-}
+local chatGradientStart = "#FF0000"                          -- starting color for chat name gradient
+local chatGradientEnd = "#FFB300"                            -- ending color for chat name gradient
+local chatUsername = "YourNameHere"                       -- username for chat (leave empty to use main username)
 local chatSuffix = "YOUR-SUFFIX-HERE"                        -- suffix text for chat nameplate
 
 -- Chat hover card settings
@@ -152,7 +145,27 @@ function events.tick()
 end
 
 -- Chat Name gradient formatting
-local ChatNameGradient = chatNameGradient
+local function generateChatGradient(text, startColor, endColor)
+  local gradient = {}
+  local startRGB = vectors.hexToRGB(startColor)
+  local endRGB = vectors.hexToRGB(endColor)
+  local textLength = #text
+  
+  for i = 1, textLength do
+    local progress = (i - 1) / math.max(1, textLength - 1) -- 0 to 1
+    local color = startRGB + (endRGB - startRGB) * progress
+    table.insert(gradient, {
+      text = text:sub(i, i),
+      color = "#" .. vectors.rgbToHex(color),
+      bold = boldText
+    })
+  end
+  
+  return gradient
+end
+
+local chatNameToUse = chatUsername ~= "" and chatUsername or (username ~= "" and username or player:getName())
+local ChatNameGradient = generateChatGradient(chatNameToUse, chatGradientStart, chatGradientEnd)
 
 -- Function to create nameplate text with custom suffix
 local function createNameplateText(...)
