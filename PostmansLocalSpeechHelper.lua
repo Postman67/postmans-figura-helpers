@@ -25,7 +25,7 @@ local model_path = models.localspeech    -- Path to the localspeech model
 
 -- Text Appearance Settings
 local hide_nameplate_during_speech = true           -- Hide nameplate while text is showing
-local default_text_color = "#FFFFFF"                 -- Default color for uncolored text (hex format)
+local default_text_color = "#FFFFFF"              -- Default color for uncolored text (hex format)
 local text_scale = 0.4                              -- Size of the text (higher = bigger)
 local text_x_position = -19                         -- X position of text (-30 is default)
 local text_y_position = 28                          -- Y position of text (20 is default)
