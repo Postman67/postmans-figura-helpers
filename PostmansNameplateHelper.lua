@@ -29,7 +29,7 @@ local nameplateSuffix = ""                                    -- text to show af
 local enableOutline = false                                  -- whether to enable text outline
 local enableShadow = true                                    -- whether to enable text shadow
 local backgroundColor = "#000000"                            -- background color (hex) Set to "#00000000" for transparent
-local outlineColor = "#FFFFFF"                               -- outline color (hex)
+local outlineColor = "#000000"                               -- outline color (hex)
 local nameplatePosition = {0, 0, 0}                         -- nameplate position offset {x, y, z}
 
 -- Chat nameplate settings
