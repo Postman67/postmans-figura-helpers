@@ -69,6 +69,7 @@ Selecting the avatar without uploading it will result in the local and global ch
 Certain words in this list are from me (Postman67's) personal preferences and experiences, feel free to modify or remove them as you see fit. Keep these in mind:
 
 ##### Single color list
+- Word entries MUST all be LOWERCASE to work properly
 - When a word is matched, it will change to the specified color. 
 - If the beginning of a word longer than one in the list contains a color, the whole word will overrun with the color.
 - i.e. `star` will match to yellow, so `starwalker` will overrun yellow. `end` will match to purple, so `ending` will overrun purple.
@@ -77,6 +78,7 @@ Certain words in this list are from me (Postman67's) personal preferences and ex
 - Words can be surrounded by asterisks `*like this*` to force yellow color (e.g. `*bottle*` will be yellow even though it isn't in the list)
 
 ##### Gradient list
+- Gradiient entries MUST all be LOWERCASE to work properly
 - When a word is matched, it will apply the specified gradient to the entire word.
 - The color overrun on single words does **NOT** apply to gradients, it must be an exact match for the gradient to apply.
 - If a word in the gradient list is also in the single words list, the gradient will take precedence.
