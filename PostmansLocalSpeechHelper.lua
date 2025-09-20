@@ -87,6 +87,7 @@ local typing_indicator_alignment = "LEFT"           -- Alignment: "LEFT", "CENTE
 -- COLOR AND GRADIENT DEFINITIONS
 -- ================================
 
+-- Word entries MUST all be LOWERCASE to work properly
 -- When a word is matched, it will change to the specified color. 
 -- If the beginning of a word longer than one in the list contains a color, the whole word will overrun with the color.
 -- i.e. "star" will match to yellow, so "starwalker" will overrun yellow. "end" will match to purple, so "ending" will overrun purple.
@@ -175,6 +176,7 @@ local color_words = {
 }
 
 -- Gradient words - define words that should have gradients
+-- Gradiient entries MUST all be LOWERCASE to work properly
 -- When a word is matched, it will apply the specified gradient to the entire word.
 -- The color overrun on single words does NOT apply to gradients, it must be an exact match for the gradient to apply.
 -- If a word in the gradient list is also in the single words list, the gradient will take precedence.
