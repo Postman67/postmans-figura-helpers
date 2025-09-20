@@ -41,8 +41,8 @@ local chatSuffixColor = "#FFFFFF"                              -- color for chat
 local boldText = true                                         -- whether chat name should be bold
 
 -- Chat hover card settings (easy configuration)
+-- Card Format: {text, color, bold (true/false)}
 local chatHoverLines = {
-  -- Format: {text, color, bold}
   {"Your Name", "#FF4D00", true},                            -- Title line
   {" (Your subtitle)", "#9898ac", true},                     -- Subtitle (same line as title)
   {"\n - First line of info", "#FFE3AE", false},            -- Info line 1 (new line)
