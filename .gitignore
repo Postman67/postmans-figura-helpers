@@ -1,4 +1,5 @@
 /.vscode/
 .luarc.json
+/.specstory/
 install.bat
 postmans-figura-helpers.code-workspace
