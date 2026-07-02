@@ -1,3 +1,5 @@
+# I CANNOT GUARANTEE COMPATIBILITY WITH MINECRAFT VERSIONS PAST 1.21.4
+
 # Postman's Figura Helpers
 
 A list of helpful script files to simply drag into your figura model
